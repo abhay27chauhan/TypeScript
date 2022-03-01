@@ -1,15 +1,17 @@
 import React from "react";
+import { Todo } from "../../model";
 
 import "./styles.css";
 
 interface Props {
   todo: string;
   setTodo: React.Dispatch<React.SetStateAction<string>>;
+  handleAdd: (e: React.FormEvent) => void
 }
 
-export const InputField = ({ todo, setTodo }: Props) => {
+export const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd }) => {
   return (
-    <form className="input">
+    <form className="input" onSubmit={handleAdd}>
       <input
         type="text"
         placeholder="Enter a Todo"
